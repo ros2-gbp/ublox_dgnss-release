@@ -1,3 +1,30 @@
+## ublox_dgnss (galactic) - 0.2.3-3
+
+The packages in the `ublox_dgnss` repository were released into the `galactic` distro by running `/usr/bin/bloom-release ublox_dgnss --track galactic --rosdistro galactic --edit` on `Mon, 26 Jul 2021 05:21:01 -0000`
+
+These packages were released:
+- `ublox_dgnss`
+- `ublox_dgnss_node`
+- `ublox_ubx_interfaces`
+- `ublox_ubx_msgs`
+
+Version of package(s) in repository `ublox_dgnss`:
+
+- upstream repository: https://github.com/aussierobots/ublox_dgnss
+- release repository: https://github.com/aussierobots/ublox_dgnss-release.git
+- rosdistro version: `0.2.2-1`
+- old version: `0.2.3-2`
+- new version: `0.2.3-3`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## ublox_dgnss (galactic) - 0.2.3-2
 
 The packages in the `ublox_dgnss` repository were released into the `galactic` distro by running `/usr/bin/bloom-release ublox_dgnss --track galactic --rosdistro galactic --edit` on `Sun, 25 Jul 2021 09:34:10 -0000`
