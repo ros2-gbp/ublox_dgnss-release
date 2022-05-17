@@ -1,0 +1,58 @@
+ros-humble-ublox-dgnss (0.3.2-2bullseye) bullseye; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Thu, 12 May 2022 14:00:00 -0000
+
+ros-humble-ublox-dgnss (0.3.1-2bullseye) bullseye; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Fri, 13 May 2022 02:43:00 -0000
+
+ros-humble-ublox-dgnss (0.3.0-2bullseye) bullseye; urgency=high
+
+  * changes for humble
+  * removed author element
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Fri, 13 May 2022 00:26:00 -0000
+
+ros-humble-ublox-dgnss (0.2.3-2bullseye) bullseye; urgency=high
+
+  * changed build dependencies
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Sat, 24 Jul 2021 14:00:00 -0000
+
+ros-humble-ublox-dgnss (0.2.2-2bullseye) bullseye; urgency=high
+
+  * 0.2.2 build farm dependency changes
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Wed, 21 Jul 2021 21:14:00 -0000
+
+ros-humble-ublox-dgnss (0.2.1-2bullseye) bullseye; urgency=high
+
+  * updated version 0.2.1
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Wed, 21 Jul 2021 19:24:00 -0000
+
+ros-humble-ublox-dgnss (0.2.0-2bullseye) bullseye; urgency=high
+
+  * updated version number and email
+  * Fixed license to Apache License, Version 2.0
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Mon, 19 Jul 2021 14:00:00 -0000
+
+ros-humble-ublox-dgnss (0.1.0-2bullseye) bullseye; urgency=high
+
+  * updated package version
+  * Initial release
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Sat, 10 Jul 2021 14:00:00 -0000
+
+
