@@ -1,3 +1,30 @@
+## ublox_dgnss (humble) - 0.3.3-1
+
+The packages in the `ublox_dgnss` repository were released into the `humble` distro by running `/usr/bin/bloom-release ublox_dgnss --track humble --rosdistro humble --edit` on `Mon, 23 May 2022 20:24:26 -0000`
+
+These packages were released:
+- `ublox_dgnss`
+- `ublox_dgnss_node`
+- `ublox_ubx_interfaces`
+- `ublox_ubx_msgs`
+
+Version of package(s) in repository `ublox_dgnss`:
+
+- upstream repository: https://github.com/aussierobots/ublox_dgnss
+- release repository: https://github.com/aussierobots/ublox_dgnss-release.git
+- rosdistro version: `0.3.2-3`
+- old version: `0.3.2-3`
+- new version: `0.3.3-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.1`
+- catkin_pkg version: `0.5.0`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## ublox_dgnss (humble) - 0.3.2-3
 
 The packages in the `ublox_dgnss` repository were released into the `humble` distro by running `/usr/bin/bloom-release ublox_dgnss --track humble --rosdistro humble --edit` on `Tue, 17 May 2022 20:44:18 -0000`
