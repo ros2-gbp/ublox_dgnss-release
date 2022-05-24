@@ -34,7 +34,7 @@ Connection::Connection(int vendor_id, int product_id, int log_level)
   ctx_ = NULL;
   devh_ = NULL;
   timeout_ms_ = 45;
-  timeout_tv_ = {1, 0};  // default the timeout to 1 seconds
+  timeout_tv_ = {1, 0};       // default the timeout to 1 seconds
   keep_running_ = true;
 }
 
@@ -80,7 +80,7 @@ void Connection::init()
   }
 
   /* Set debugging output level.
-  */
+   */
     #if LIBUSB_API_VERSION >= 0x01000106
   libusb_set_option(ctx_, LIBUSB_OPTION_LOG_LEVEL, log_level_);
     #else
@@ -125,7 +125,7 @@ void Connection::open_device()
   if (rc < 0) {
     throw "Error getting device descriptor: " + *libusb_error_name(rc);
   }
-  auto num_configurations = dev_desc.bNumConfigurations;  // this should be 1
+  auto num_configurations = dev_desc.bNumConfigurations;       // this should be 1
   if (num_configurations != 1) {
     throw "Error bNumConfigurations is not 1 - dont know which configuration to use";
   }
@@ -165,7 +165,7 @@ void Connection::open_device()
 
   /* Start configuring the device:
    * - set line state
-  */
+   */
   rc = libusb_control_transfer(
     devh_, 0x21, 0x22, ACM_CTRL_DTR | ACM_CTRL_RTS,
     0, NULL, 0, 0);
@@ -232,8 +232,8 @@ int Connection::hotplug_detach_callback(
 int Connection::read_chars(u_char * data, size_t size)
 {
   /* To receive characters from the device initiate a bulk_transfer to the
-  * Endpoint with address ep_in_addr.
-  */
+   * Endpoint with address ep_in_addr.
+   */
   int actual_length;
   int rc = libusb_bulk_transfer(
     devh_, ep_data_in_addr_ | LIBUSB_ENDPOINT_IN, data, size, &actual_length,
@@ -454,7 +454,7 @@ std::shared_ptr<transfer_t> Connection::make_transfer_in()
     transfer_in, devh_, ep_data_in_addr_ | LIBUSB_ENDPOINT_IN,
     // in_buffer_, IN_BUFFER_SIZE,
     transfer->buffer->data(), transfer->buffer->size(),
-    callback_in_fn, user_data, 0);   // no timeout
+    callback_in_fn, user_data, 0);             // no timeout
 
   return transfer;
 }
@@ -564,7 +564,7 @@ void Connection::close_devh()
         libusb_attach_kernel_driver(devh_, if_num);
       }
     }
-    libusb_close(devh_);   // hangs if the device has been detached already
+    libusb_close(devh_);             // hangs if the device has been detached already
     devh_ = nullptr;
     attached_ = false;
   }

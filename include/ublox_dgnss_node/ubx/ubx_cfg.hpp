@@ -40,7 +40,7 @@ struct layers_t
 };
 
 // layer_t used for val get
-enum layer_t: u1_t {RAM_LAYER = 0, BBR_LAYER = 1, FLASH_LAYER = 2, DEFAULT_LAYER = 7};
+enum layer_t : u1_t {RAM_LAYER = 0, BBR_LAYER = 1, FLASH_LAYER = 2, DEFAULT_LAYER = 7};
 
 class CfgValGetPayload : UBXPayload
 {
@@ -76,9 +76,10 @@ public:
     size_t idx = 4;
     // exttract key value data -
     // key will be 4 bytes + at least 1 byte for value
-    while (idx < (size_t)size - 4) {
+    while (idx < static_cast<size_t>(size) - 4) {
       // create key and increment payload ptr index
-      auto ubx_key_id = ubx_key_id_t {*reinterpret_cast<u4_t *>(&payload_[idx])};
+      u4_t key_id = *reinterpret_cast<u4_t *>(&payload_[idx]);
+      auto ubx_key_id = ubx_key_id_t {key_id};
       idx += sizeof(u4_t);
 
       // extract packed value and increment payload ptr index by its storage size
@@ -194,8 +195,8 @@ struct transaction_t
     u1_t all;
     struct
     {
-      u1_t action : 2;     // refer UBX Protocol 0=transactionless, 1 = restart, 2 = ongoing,
-                           // 3 = apply and end a set transaction
+      u1_t action : 2;  // refer UBX Protocol 0=transactionless, 1 = restart, 2 = ongoing,
+                        // 3 = apply and end a set transaction
     } bits;
   };
 };
@@ -253,15 +254,15 @@ struct nav_bbr_mask_t
     x2_t all;
     struct
     {
-      l_t eph : 1;            // Ephemeris
-      l_t alm : 1;            // Almanac
-      l_t health : 1;         // Health
-      l_t klob : 1;           // Klobuchar parameters
-      l_t pos : 1;            // Position
-      l_t clkd : 1;           // Clock drift
-      l_t osc : 1;            // Oscillator drift
-      l_t utc : 1;            // UTC Correction + GPS Leap seconds parameters
-      l_t rtc : 1;            // RTC
+      l_t eph : 1;                   // Ephemeris
+      l_t alm : 1;                   // Almanac
+      l_t health : 1;                   // Health
+      l_t klob : 1;                   // Klobuchar parameters
+      l_t pos : 1;                   // Position
+      l_t clkd : 1;                   // Clock drift
+      l_t osc : 1;                   // Oscillator drift
+      l_t utc : 1;                   // UTC Correction + GPS Leap seconds parameters
+      l_t rtc : 1;                   // RTC
       l_t aop : 1;
     } bits;
   };
@@ -281,7 +282,9 @@ public:
   u1_t reserved0 = 0x00;
 
   CfgRstPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
   std::tuple<u1_t *, size_t> make_poll_payload() override
   {
     payload_.clear();

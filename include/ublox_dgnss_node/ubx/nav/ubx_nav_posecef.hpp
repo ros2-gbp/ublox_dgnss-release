@@ -39,7 +39,9 @@ public:
 
 public:
   NavPosECEFPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
   NavPosECEFPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
   {
