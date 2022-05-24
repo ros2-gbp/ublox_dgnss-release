@@ -26,7 +26,7 @@ namespace ubx::nav::relposned
 {
 
 
-enum carrier_solution_status_t: u1_t {no_carrier_range_solution = 0,
+enum carrier_solution_status_t : u1_t {no_carrier_range_solution = 0,
   carrier_phase_solution_with_floating_ambiguities = 1,
   carrier_phase_solution_with_fixed_ambiguities = 2 };
 
@@ -36,19 +36,19 @@ struct status_flags_t
     x4_t all;
     struct
     {
-      l_t gnssFixOK : 1;   // 1 = A valid fix (i.e within DOP & accuracy masks)
-      l_t diffSoln : 1;   // 1 = differential corrections were applied
-      l_t relPosValid : 1;  // 1 = relative position components and accuracies are valid
-                            // and, in moving base mode only, if baseline is valid
-      carrier_solution_status_t carrSoln : 2;   // carrier phase range solution
-      l_t isMoving : 1;   // 1 if the received is operating in moving base mode
-      l_t refPosMiss : 1;   // 1 if extrapolated reference position was used to compute moving
-                            // base solution this epoch.
-      l_t refObsMiss : 1;   // 1 if extrapolated reference observations were used to compute
-                            // moving base solution this epoch.
-      l_t relPosHeadingValid : 1;   // 1 = relPosHeading is valid
-      l_t relPosNormalized : 1;   // 1 = components of the relative position vector
-                                  // (including the high-precision parts) are normalized
+      l_t gnssFixOK : 1;                // 1 = A valid fix (i.e within DOP & accuracy masks)
+      l_t diffSoln : 1;                 // 1 = differential corrections were applied
+      l_t relPosValid : 1;              // 1 = relative position components and accuracies are valid
+                                        // and, in moving base mode only, if baseline is valid
+      carrier_solution_status_t carrSoln : 2;  // carrier phase range solution
+      l_t isMoving : 1;                 // 1 if the received is operating in moving base mode
+      l_t refPosMiss : 1;               // 1 if extrapolated reference position was used to compute
+                                        // moving base solution this epoch.
+      l_t refObsMiss : 1;               // 1 if extrapolated reference observations were used to
+                                        // compute moving base solution this epoch.
+      l_t relPosHeadingValid : 1;       // 1 = relPosHeading is valid
+      l_t relPosNormalized : 1;         // 1 = components of the relative position vector
+                                        // (including the high-precision parts) are normalized
     } bits;
   };
 };
@@ -84,7 +84,9 @@ public:
 
 public:
   NavRelPosNedPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
   NavRelPosNedPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
   {
