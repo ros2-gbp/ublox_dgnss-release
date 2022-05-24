@@ -65,7 +65,9 @@ class UsbException : public std::runtime_error
 {
 public:
   explicit UsbException(std::string msg)
-  : std::runtime_error(msg) {}
+  : std::runtime_error(msg)
+  {
+  }
 };
 
 // external function callback definitions for the connection class
@@ -82,7 +84,7 @@ private:
   libusb_device_handle * devh_;
   libusb_device * dev_;
 
-  // hotplug
+// hotplug
   hotplug_attach_cb_fn hp_attach_cb_fn_;
   hotplug_detach_cb_fn hp_detach_cb_fn_;
   libusb_hotplug_callback_handle hp_[2];
@@ -97,7 +99,7 @@ private:
   u_int8_t num_interfaces_ = 0;
   unsigned int timeout_ms_;
 
-  // asynchronous comms
+// asynchronous comms
   connection_out_cb_fn out_cb_fn_;
   connection_in_cb_fn in_cb_fn_;
   connection_exception_cb_fn exception_cb_fn_;
@@ -110,9 +112,9 @@ private:
   std::deque<std::shared_ptr<transfer_t>> transfer_queue_;
 
 private:
-  // this is called after the out transfer to USB from HOST has been received by libusb
+// this is called after the out transfer to USB from HOST has been received by libusb
   void callback_out(struct libusb_transfer * transfer);
-  // this is called when the stat for in is available - from USB in HOST
+// this is called when the stat for in is available - from USB in HOST
   void callback_in(struct libusb_transfer * transfer);
 
   int hotplug_attach_callback(
@@ -138,37 +140,88 @@ public:
   void init_async();  // throws exception on failure
   Connection(int vendor_id, int product_id, int log_level = LIBUSB_OPTION_LOG_LEVEL);
   ~Connection();
-  void set_in_callback(connection_in_cb_fn in_cb_fn) {in_cb_fn_ = in_cb_fn;}
-  void set_out_callback(connection_out_cb_fn out_cb_fn) {out_cb_fn_ = out_cb_fn;}
+  void set_in_callback(connection_in_cb_fn in_cb_fn)
+  {
+    in_cb_fn_ = in_cb_fn;
+  }
+  void set_out_callback(connection_out_cb_fn out_cb_fn)
+  {
+    out_cb_fn_ = out_cb_fn;
+  }
   void set_exception_callback(connection_exception_cb_fn exception_fb_fn)
-  {exception_cb_fn_ = exception_fb_fn;}
+  {
+    exception_cb_fn_ = exception_fb_fn;
+  }
   void set_hotplug_attach_callback(hotplug_attach_cb_fn hp_attach_cb_fn)
-  {hp_attach_cb_fn_ = hp_attach_cb_fn;}
+  {
+    hp_attach_cb_fn_ = hp_attach_cb_fn;
+  }
   void set_hotplug_detach_callback(hotplug_detach_cb_fn hp_detach_cb_fn)
-  {hp_detach_cb_fn_ = hp_detach_cb_fn;}
-  int vendor_id() {return vendor_id_;}
-  int product_id() {return product_id_;}
-  int bus_number() {return dev_ ? libusb_get_bus_number(dev_) : 0;}
-  int device_address() {return dev_ ? libusb_get_device_address(dev_) : 0;}
-  int device_speed() {return dev_ ? libusb_get_device_speed(dev_) : 0;}
+  {
+    hp_detach_cb_fn_ = hp_detach_cb_fn;
+  }
+  int vendor_id()
+  {
+    return vendor_id_;
+  }
+  int product_id()
+  {
+    return product_id_;
+  }
+  int bus_number()
+  {
+    return dev_ ? libusb_get_bus_number(dev_) : 0;
+  }
+  int device_address()
+  {
+    return dev_ ? libusb_get_device_address(dev_) : 0;
+  }
+  int device_speed()
+  {
+    return dev_ ? libusb_get_device_speed(dev_) : 0;
+  }
   char * device_speed_txt();
-  u_int8_t port_number() {return dev_ ? libusb_get_port_number(dev_) : 0;}
+  u_int8_t port_number()
+  {
+    return dev_ ? libusb_get_port_number(dev_) : 0;
+  }
   int read_chars(u_char * data, size_t size);
   void write_char(u_char c);
   void write_buffer(u_char * buf, size_t size);
   void write_buffer_async(u_char * buf, size_t size, void * user_data);
-  u_int8_t num_interfaces() {return num_interfaces_;}
-  int ep_data_out_addr() {return ep_data_out_addr_;}
-  int ep_data_in_addr() {return ep_data_in_addr_;}
-  int ep_comms_in_addr() {return ep_comms_in_addr_;}
-  unsigned int timeout_ms() {return timeout_ms_;}
-  bool keep_running() {return keep_running_;}
-  bool attached() {return attached_;}
+  u_int8_t num_interfaces()
+  {
+    return num_interfaces_;
+  }
+  int ep_data_out_addr()
+  {
+    return ep_data_out_addr_;
+  }
+  int ep_data_in_addr()
+  {
+    return ep_data_in_addr_;
+  }
+  int ep_comms_in_addr()
+  {
+    return ep_comms_in_addr_;
+  }
+  unsigned int timeout_ms()
+  {
+    return timeout_ms_;
+  }
+  bool keep_running()
+  {
+    return keep_running_;
+  }
+  bool attached()
+  {
+    return attached_;
+  }
 
-  // number of existing transfer in in the queue that are not complete
+// number of existing transfer in in the queue that are not complete
   size_t queued_transfer_in_num();
 
-  // needs to be called for libusb to action asynchronos events
+// needs to be called for libusb to action asynchronos events
   void handle_usb_events();
   void shutdown();
 };
