@@ -34,7 +34,9 @@ public:
 
 public:
   InfDebugPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
 
   InfDebugPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
@@ -65,7 +67,9 @@ public:
 
 public:
   InfErrorPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
 
   InfErrorPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
@@ -97,7 +101,9 @@ public:
 
 public:
   InfNoticePayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
 
   InfNoticePayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
@@ -127,7 +133,9 @@ public:
 
 public:
   InfTestPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
 
   InfTestPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
@@ -157,7 +165,9 @@ public:
 
 public:
   InfWarningPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
 
   InfWarningPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
