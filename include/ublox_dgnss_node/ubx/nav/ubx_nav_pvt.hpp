@@ -31,25 +31,25 @@ struct validity_flags_t
     x1_t all;
     struct
     {
-      l_t validDate : 1;          // 1 = valid UTC date
-      l_t validTime : 1;          // 1 = valid UTC time of day
-      l_t fullyResolved : 1;      // 1 = UTC Time of day has been fully resolved
-                                  // (no seconds uncertainty)
-      l_t validMag : 1;           // 1 = valid magnetic declination
+      l_t validDate : 1;                  // 1 = valid UTC date
+      l_t validTime : 1;                  // 1 = valid UTC time of day
+      l_t fullyResolved : 1;              // 1 = UTC Time of day has been fully resolved
+                                          // (no seconds uncertainty)
+      l_t validMag : 1;                   // 1 = valid magnetic declination
     } bits;
   };
 };
 
-enum gnss_fix_t: u1_t {gnss_no_fix = 0, gnss_dead_reackoning_only = 1, gnss_fix_2d = 2,
+enum gnss_fix_t : u1_t {gnss_no_fix = 0, gnss_dead_reackoning_only = 1, gnss_fix_2d = 2,
   gnss_fix_3d = 3,
   gnss_plus_dead_reackoning = 4, gnss_time_only = 5};
 
 
-enum psm_state_pvt_t: u1_t {not_active = 0, enabled = 1, acquisition = 2, tracking = 3,
+enum psm_state_pvt_t : u1_t {not_active = 0, enabled = 1, acquisition = 2, tracking = 3,
   power_optimized_tracking = 4, inactive = 5};
 
 
-enum pvt_carrier_solution_status_t: u1_t {no_carrier_range_solution = 0,
+enum pvt_carrier_solution_status_t : u1_t {no_carrier_range_solution = 0,
   carrier_phase_solution_with_floating_ambiguities = 1,
   carrier_phase_solution_with_fixed_ambiguities = 2 };
 
@@ -59,12 +59,12 @@ struct gnss_fix_status_flags_t
     x1_t all;
     struct
     {
-      l_t gnssFixOK : 1;        // 1 = valid fix (ie within DOP & accruacy masks)
-      l_t diffSoln : 1;         // 1 = differential corrections were applied
-      psm_state_pvt_t psmState : 3;   // power save mode state
-      l_t headVehValid : 1;      // 1 = heading of vehicle is valid,
-                                 // only set if the receiver is in sensor fusion mode
-      pvt_carrier_solution_status_t carrSoln : 2;        // carrier phase range solution status
+      l_t gnssFixOK : 1;                  // 1 = valid fix (ie within DOP & accruacy masks)
+      l_t diffSoln : 1;                   // 1 = differential corrections were applied
+      psm_state_pvt_t psmState : 3;       // power save mode state
+      l_t headVehValid : 1;               // 1 = heading of vehicle is valid,
+                                          // only set if the receiver is in sensor fusion mode
+      pvt_carrier_solution_status_t carrSoln : 2;  // carrier phase range solution status
     } bits;
   };
 };
@@ -75,10 +75,10 @@ struct additional_flags_1_t
     x1_t all;
     struct
     {
-      l_t confirmedAvailable : 1;   // 1 = information about UTC date and time of day
-                                    //     validity confirmation is available
-      l_t confirmedDate : 1;        // 1 = UTC Date validity could be confirmed
-      l_t confirmedTime : 1;        // 1 = UTC Time of Day validity could be confirmed
+      l_t confirmedAvailable : 1;          // 1 = information about UTC date and time of day
+                                           //     validity confirmation is available
+      l_t confirmedDate : 1;               // 1 = UTC Date validity could be confirmed
+      l_t confirmedTime : 1;               // 1 = UTC Time of Day validity could be confirmed
     } bits;
   };
 };
@@ -89,7 +89,7 @@ struct additional_flags_2_t
     x1_t all;
     struct
     {
-      l_t invalidLLH : 1;   // 1 = invalid lon, lat, height, hMSL
+      l_t invalidLLH : 1;                   // 1 = invalid lon, lat, height, hMSL
     } bits;
   };
 };
@@ -139,7 +139,9 @@ public:
 
 public:
   NavPvtPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
   NavPvtPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
   {
