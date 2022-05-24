@@ -53,7 +53,7 @@ public:
   i4_t ecefX;     // cm - ECEF X coordinate
   i4_t ecefY;     // cm - ECEF Y coordinate
   i4_t ecefZ;     // cm - ECEF Z coordinate
-  //  Must be in the range of -99..+99. Precise coordinate in cm = ecefX + (ecefXHp * 1e-2)
+//  Must be in the range of -99..+99. Precise coordinate in cm = ecefX + (ecefXHp * 1e-2)
   i1_t ecefXHp;     // mm scale 0.1 - High Precision ECEF X coordinate
   i1_t ecefYHp;     // mm scale 0.1 - High Precision ECEF Y coordinate
   i1_t ecefZHp;     // mm scale 0.1 - High Precision ECEF Z coordinate
@@ -62,7 +62,9 @@ public:
 
 public:
   NavHPPosECEFPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
   NavHPPosECEFPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
   {
