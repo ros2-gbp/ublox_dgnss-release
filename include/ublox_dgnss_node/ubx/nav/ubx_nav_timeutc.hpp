@@ -25,7 +25,7 @@
 namespace ubx::nav::timeutc
 {
 
-enum utc_std_id_t: u1_t
+enum utc_std_id_t : u1_t
 {
   not_available = 0,
   CRL = 1,                // Communications Research Labratory (CRL),Tokyo, Japan
@@ -44,10 +44,10 @@ struct validity_flags_t
     x1_t all;
     struct
     {
-      l_t validTOW : 1;         // 1 = valid Time of Week
-      l_t validWKN : 1;         // 1 = valid Week Number
-      l_t validUTC : 1;         // 1 = valid UTC Time
-      utc_std_id_t utcStandard : 4;     // UTC standard identifier
+      l_t validTOW : 1;                   // 1 = valid Time of Week
+      l_t validWKN : 1;                   // 1 = valid Week Number
+      l_t validUTC : 1;                   // 1 = valid UTC Time
+      utc_std_id_t utcStandard : 4;                   // UTC standard identifier
     } bits;
   };
 };
@@ -71,7 +71,9 @@ public:
 
 public:
   NavTimeUTCPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
   NavTimeUTCPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
   {
