@@ -31,11 +31,13 @@ public:
   static const msg_class_t MSG_CLASS = UBX_NAV;
   static const msg_id_t MSG_ID = UBX_NAV_RESETODO;
 
-  // no payload for a command
+// no payload for a command
 
 public:
   NavResetOdoPayload()
-  : UBXPayload(MSG_CLASS, MSG_ID) {}
+  : UBXPayload(MSG_CLASS, MSG_ID)
+  {
+  }
   NavResetOdoPayload(ch_t * payload_polled, u2_t size)
   : UBXPayload(MSG_CLASS, MSG_ID)
   {
