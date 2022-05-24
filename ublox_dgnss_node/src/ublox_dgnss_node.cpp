@@ -61,8 +61,8 @@ namespace ublox_dgnss
 
 enum FrameType
 {
-  frame_in,  // in from the gps device
-  frame_out  // out to the gps device
+  frame_in,       // in from the gps device
+  frame_out       // out to the gps device
 };
 struct ubx_queue_frame_t
 {
@@ -73,14 +73,14 @@ struct ubx_queue_frame_t
 
 enum ParamStatus
 {
-  PARAM_INITIAL,    // default value parameter used
-                    // ie not set by user (and sent to GPS) or retrieved from gps
+  PARAM_INITIAL,       // default value parameter used
+                       // ie not set by user (and sent to GPS) or retrieved from gps
   PARAM_USER,       // value set by user either overidden at startup or param set
-  PARAM_LOADED,     // loaded from gps device - not all items have a value set
-                    // or default value on the gps
-  PARAM_VALSET,     // value sent to gps device - might get rejected there
-  PARAM_VALGET,     // attempt to retrieve value from gps device
-  PARAM_ACKNAK      // todo in a future version - poll for value or valset might not work
+  PARAM_LOADED,       // loaded from gps device - not all items have a value set
+                      // or default value on the gps
+  PARAM_VALSET,       // value sent to gps device - might get rejected there
+  PARAM_VALGET,       // attempt to retrieve value from gps device
+  PARAM_ACKNAK       // todo in a future version - poll for value or valset might not work
 };
 struct param_state_t
 {
@@ -286,11 +286,11 @@ private:
   std::shared_ptr<ubx::nav::UbxNav> ubx_nav_;
 
   rclcpp::node_interfaces::OnSetParametersCallbackHandle::SharedPtr parameters_callback_handle_;
-  // specific to libusb to to process events asynchronously
+// specific to libusb to to process events asynchronously
   rclcpp::TimerBase::SharedPtr handle_usb_events_timer_;
 
-  // don't want to block fetching of messages from the ublox device,
-  // so put them in a queue, with a timestamp to be processed later
+// don't want to block fetching of messages from the ublox device,
+// so put them in a queue, with a timestamp to be processed later
   std::deque<ubx_queue_frame_t> ubx_queue_;
   std::mutex ubx_queue_mutex_;
 
@@ -344,7 +344,7 @@ private:
   }
 
 public:
-  // declare ubx ros parameter
+// declare ubx ros parameter
   UBLOX_DGNSS_NODE_LOCAL
   void set_or_declare_ubx_cfg_param(
     const ubx::cfg::ubx_cfg_item_t & ubx_ci,
@@ -454,7 +454,7 @@ public:
     }
   }
 
-  // declare ubx paramters
+// declare ubx paramters
   UBLOX_DGNSS_NODE_LOCAL
   void ubx_cfg_payload_parameters(std::shared_ptr<ubx::cfg::CfgValGetPayload> cfg_val_get_payload)
   {
@@ -576,7 +576,7 @@ public:
       if (valid) {
         break;
       }
-    }  // end for loop over ubxCfgItemMap
+    }     // end for loop over ubxCfgItemMap
 
     if (!valid) {
       result.reason += parameter.get_name() + " is not valid!";
@@ -586,7 +586,7 @@ public:
     return result;
   }
 
-  // on set parameters callback function
+// on set parameters callback function
   UBLOX_DGNSS_NODE_LOCAL
   rcl_interfaces::msg::SetParametersResult on_set_parameters_callback(
     const std::vector<rclcpp::Parameter> & parameters)
@@ -706,7 +706,7 @@ public:
     (void)response;
   }
 
-  // handle host in from ublox gps to host callback
+// handle host in from ublox gps to host callback
   UBLOX_DGNSS_NODE_LOCAL
   void ublox_in_callback(libusb_transfer * transfer_in)
   {
@@ -761,7 +761,7 @@ public:
     }
   }
 
-  // handle out to ublox gps device to host callback
+// handle out to ublox gps device to host callback
   UBLOX_DGNSS_NODE_PUBLIC
   void ublox_out_callback(libusb_transfer * transfer_out)
   {
@@ -825,36 +825,36 @@ public:
     RCLCPP_WARN(this->get_logger(), "usb hotplug detach");
   }
 
-  // UBLOX_DGNSS_NODE_PUBLIC
-  // void ublox_timer_callback() {
-  //   const char *remove_any_of = "\n\r";
+// UBLOX_DGNSS_NODE_PUBLIC
+// void ublox_timer_callback() {
+//   const char *remove_any_of = "\n\r";
 
-  //   static u_char buf[64*10+1];
-  //   int len;
-  //   try {
-  //     len = usbc_->read_chars(buf, sizeof(buf));
-  //     buf[len] = 0;
-  //     if (len > 0) {
-  //       for (int i = len -2; i < len; i++)
-  //         if (strchr(remove_any_of, buf[i]))
-  //           buf[i]=0;
-  //     }
-  //     if (buf[0]==0x24)
-  //       RCLCPP_INFO(this->get_logger(),"len: %d read: %s", len, &buf);
-  //     else {
-  //       std::ostringstream os;
-  //       os << "0x";
-  //       for (size_t i = 0; i < len; i++) {
-  //         os <<std::setfill('0') << std::setw(2) << std::right << std::hex << +buf[i];
-  //       }
-  //       RCLCPP_INFO(this->get_logger(),"len: %d buf: %s", len, os.str().c_str());
-  //     }
-  //   } catch (usb::UsbException& e) {
-  //     RCLCPP_WARN(this->get_logger(), "usb read_chars exception: %s", e.what());
-  //   } catch (usb::TimeoutException& e) {
-  //     RCLCPP_WARN(this->get_logger(), "usb read_chars timeout: %s", e.what());
-  //   };
-  // }
+//   static u_char buf[64*10+1];
+//   int len;
+//   try {
+//     len = usbc_->read_chars(buf, sizeof(buf));
+//     buf[len] = 0;
+//     if (len > 0) {
+//       for (int i = len -2; i < len; i++)
+//         if (strchr(remove_any_of, buf[i]))
+//           buf[i]=0;
+//     }
+//     if (buf[0]==0x24)
+//       RCLCPP_INFO(this->get_logger(),"len: %d read: %s", len, &buf);
+//     else {
+//       std::ostringstream os;
+//       os << "0x";
+//       for (size_t i = 0; i < len; i++) {
+//         os <<std::setfill('0') << std::setw(2) << std::right << std::hex << +buf[i];
+//       }
+//       RCLCPP_INFO(this->get_logger(),"len: %d buf: %s", len, os.str().c_str());
+//     }
+//   } catch (usb::UsbException& e) {
+//     RCLCPP_WARN(this->get_logger(), "usb read_chars exception: %s", e.what());
+//   } catch (usb::TimeoutException& e) {
+//     RCLCPP_WARN(this->get_logger(), "usb read_chars timeout: %s", e.what());
+//   };
+// }
 
 private:
   UBLOX_DGNSS_NODE_LOCAL
@@ -1755,11 +1755,11 @@ private:
   {
     ubx_cfg_->cfg_val_set_cfgdata_clear();
     ubx_cfg_->cfg_val_set_layer_ram(true);
-    ubx_cfg_->cfg_val_set_transaction(0);  // transactionless
+    ubx_cfg_->cfg_val_set_transaction(0);     // transactionless
 
     std::string item_list;
     size_t i = 0;
-    size_t n = 10;  // every n output a request
+    size_t n = 10;     // every n output a request
     for (auto ci : ubx::cfg::ubxKeyCfgItemMap) {
       auto ubx_ci = ci.second;
       ubx::value_t value {0x0000000000000000};
@@ -1800,7 +1800,7 @@ private:
 
     std::string item_list;
     size_t i = 0;
-    size_t n = 10;  // every n output a request
+    size_t n = 10;     // every n output a request
     for (auto ci : ubx::cfg::ubxKeyCfgItemMap) {
       auto ubx_key_id = ci.first;
       auto ubx_ci = ci.second;
@@ -1835,7 +1835,7 @@ private:
     std::string item_list;
     size_t i = 0;
     bool trans_start = false;
-    size_t n = 1;  // every n output a request
+    size_t n = 1;     // every n output a request
     for (auto ci : ubx::cfg::ubxKeyCfgItemMap) {
       trans_start = true;
       auto ubx_ci = ci.second;
@@ -1868,7 +1868,7 @@ private:
       ubx_cfg_->cfg_val_set_poll_async();
       ubx_cfg_->cfg_val_set_cfgdata_clear();
     }
-    ubx_cfg_->cfg_val_set_transaction(0);  // make sure its tranaction less
+    ubx_cfg_->cfg_val_set_transaction(0);     // make sure its tranaction less
   }
 
   UBLOX_DGNSS_NODE_LOCAL
