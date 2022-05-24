@@ -28,7 +28,7 @@ size_t storage_size_bytes(u8_t storage_size_id)
 {
   size_t size = 0;
   switch (storage_size_id) {
-    case 0x01: size = 1; break;   /// one bit but uses one byte
+    case 0x01: size = 1; break;     /// one bit but uses one byte
     case 0x02: size = 1; break;
     case 0x03: size = 2; break;
     case 0x04: size = 4; break;
@@ -50,11 +50,26 @@ union ubx_key_id_t {
     u1_t storage_size_id : 3;
     u1_t reserved0 : 1;
   } bits;
-  u4_t key_id() {return all;}
-  u1_t storage_size_id() {return bits.storage_size_id;}
-  u1_t group_id() {return bits.group_id;}
-  u2_t item_id() {return bits.item_id;}     // actually 12 bits
-  size_t storage_size() {return storage_size_bytes(bits.storage_size_id);}
+  u4_t key_id()
+  {
+    return all;
+  }
+  u1_t storage_size_id()
+  {
+    return bits.storage_size_id;
+  }
+  u1_t group_id()
+  {
+    return bits.group_id;
+  }
+  u2_t item_id()
+  {
+    return bits.item_id;
+  }                                         // actually 12 bits
+  size_t storage_size()
+  {
+    return storage_size_bytes(bits.storage_size_id);
+  }
   std::string to_hex()
   {
     std::ostringstream oss;
@@ -72,21 +87,21 @@ struct key_value_t
 
 enum ubx_unit_t
 {
-  NA,     // not applicable
-  M,     // meters
-  Y,     // years
-  MONTH,     // months
-  D,     // days
-  H,     // hours
-  MIN,     // minutes
-  S,     // seconds
-  HZ,     // frquency (Hz)
-  MA,     // milli amps (mA)
-  MS,     // milliseconds
-  DEG,     // degree ie Longitude, Latitude
-  MM,      // milimeter
-  CM,      // centimeter
-  MPS,     // meters per second
+  NA,       // not applicable
+  M,       // meters
+  Y,       // years
+  MONTH,       // months
+  D,       // days
+  H,       // hours
+  MIN,       // minutes
+  S,       // seconds
+  HZ,       // frquency (Hz)
+  MA,       // milli amps (mA)
+  MS,       // milliseconds
+  DEG,       // degree ie Longitude, Latitude
+  MM,       // milimeter
+  CM,       // centimeter
+  MPS,       // meters per second
 };
 
 struct ubx_cfg_item_t
@@ -136,8 +151,8 @@ enum CFG_TMODE_POS_TYPE_ENUM {ECEF = 0, LLH = 1};
 const ubx_cfg_item_t CFG_NAVHPG_DGNSSMODE = {"CFG_NAVHPG_DGNSSMODE", 0x20140011, E1, 1, NA};
 enum CFG_NAVHPG_DGNSSMODE_ENUM
 {
-  RTK_FLOAT = 2,     // no attempts made to fix ambiguities
-  RTK_FIXED = 3      // Ambiguities are fixed whenever possible
+  RTK_FLOAT = 2,       // no attempts made to fix ambiguities
+  RTK_FIXED = 3       // Ambiguities are fixed whenever possible
 };
 
 // cfg navspg - standard precision navigation configuration
@@ -167,10 +182,10 @@ enum CFG_NAVSPG_UTCSTANDARD_ENUM
 const ubx_cfg_item_t CFG_NAVSPG_DYNMODEL = {"CFG_NAVSPG_DYNMODEL", 0x20110021, E1, 1, NA};
 enum CFG_NAVSPG_DYNMODEL_ENUM
 {
-  DYN_MODEL_PORT = 0,     // Portable
-  DYN_MODEL_STAT = 2,     // Stationary
-  DYN_MODEL_PED = 3,      // Pedestrian
-  DYN_MODEL_AUTOMOT = 4,      // Automotive
+  DYN_MODEL_PORT = 0,       // Portable
+  DYN_MODEL_STAT = 2,       // Stationary
+  DYN_MODEL_PED = 3,       // Pedestrian
+  DYN_MODEL_AUTOMOT = 4,       // Automotive
   DYN_MODEL_SEA = 5,          // Sea
   DYN_MODEL_AIR1 = 6,         // Airborne <1g acceleration
   DYN_MODEL_AIR2 = 7,         // Airborne <2g acceleration
@@ -298,7 +313,10 @@ std::map<ubx_key_id_t, ubx_cfg_item_t> ubxKeyCfgItemMap = {
   {CFG_MSGOUT_UBX_NAV_VELNED_USB.ubx_key_id, CFG_MSGOUT_UBX_NAV_VELNED_USB},
 };
 
-bool operator<(const ubx_key_id_t & fk1, const ubx_key_id_t & fk2) {return fk1.all < fk2.all;}
+bool operator<(const ubx_key_id_t & fk1, const ubx_key_id_t & fk2)
+{
+  return fk1.all < fk2.all;
+}
 }  // namespace ubx::cfg
 
 #endif  // UBLOX_DGNSS_NODE__UBX__UBX_CFG_ITEM_HPP_
