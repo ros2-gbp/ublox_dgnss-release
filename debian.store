@@ -1,1 +1,1 @@
-{"base": "e969a52", "parent": "debian/rolling/ublox_dgnss", "previous": "108bc54", "trim": "", "trimbase": ""}
+{"base": "59863bd", "parent": "debian/iron/ublox_dgnss", "previous": "16dc6f9", "trim": "", "trimbase": ""}
