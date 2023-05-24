@@ -19,11 +19,15 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_core REQUIRED)
+find_package(ament_cmake_test REQUIRED)
+find_package(ament_cmake_uncrustify REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(ublox_ubx_msgs REQUIRED)
 find_package(ublox_ubx_interfaces REQUIRED)
+find_package(rtcm_msgs REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(libusb REQUIRED libusb-1.0)
@@ -45,13 +49,16 @@ ament_target_dependencies(ublox_dgnss_components
   std_msgs
   ublox_ubx_msgs
   ublox_ubx_interfaces
+  rtcm_msgs
 )
 
 target_link_libraries(ublox_dgnss_components
   usb-1.0
 )
 
-rclcpp_components_register_node(ublox_dgnss_components PLUGIN "ublox_dgnss::UbloxDGNSSNode" EXECUTABLE ublox_dgnss_node)
+rclcpp_components_register_node(ublox_dgnss_components
+  PLUGIN "ublox_dgnss::UbloxDGNSSNode"
+  EXECUTABLE ublox_dgnss_node)
 
 install(TARGETS
   ublox_dgnss_components
@@ -64,6 +71,8 @@ install(TARGETS
 #   DIRECTORY launch
 #   DESTINATION share/${PROJECT_NAME}
 # )
+
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
