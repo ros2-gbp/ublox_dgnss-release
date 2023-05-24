@@ -2,6 +2,14 @@
 Changelog for package ublox_ubx_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.4.2 (2023-05-24)
+------------------
+
+0.4.1 (2023-05-24)
+------------------
+* updates for release
+* Contributors: Nick Hortovanyi
+
 0.3.5 (2022-05-24)
 ------------------
 * fixed title underline
