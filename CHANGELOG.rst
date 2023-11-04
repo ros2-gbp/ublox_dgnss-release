@@ -2,6 +2,19 @@
 Changelog for package ublox_ubx_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.2 (2023-11-05)
+------------------
+
+0.5.1 (2023-10-13)
+------------------
+* Merge branch 'aussierobots:main' into main
+* Contributors: Geoff Sokoll
+
+0.5.0 (2023-10-13)
+------------------
+* Added new messages for satellite data & security
+* Contributors: Nick Hortovanyi
+
 0.4.4 (2023-05-24)
 ------------------
 
