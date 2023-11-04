@@ -2,6 +2,17 @@
 Changelog for package ntrip_client_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.2 (2023-11-05)
+------------------
+
+0.5.1 (2023-10-13)
+------------------
+* Merge branch 'aussierobots:main' into main
+* Contributors: Geoff Sokoll
+
+0.5.0 (2023-10-13)
+------------------
+
 0.4.4 (2023-05-24)
 ------------------
 * cmake uncrustify changes
