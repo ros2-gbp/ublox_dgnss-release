@@ -2,6 +2,31 @@
 Changelog for package ublox_dgnss_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.2 (2023-11-05)
+------------------
+* removed saving of read serial str in connection
+* uncrustify format issue
+* fixed error messages
+* added rc logic and throws
+* Contributors: Nick Hortovanyi
+
+0.5.1 (2023-10-13)
+------------------
+* Merge branch 'aussierobots:main' into main
+* Contributors: Geoff Sokoll
+
+0.5.0 (2023-10-13)
+------------------
+* code formatting issues
+* fixed line length
+* Merge branch 'main' of github.com:aussierobots/ublox_dgnss
+* Merge pull request `#12 <https://github.com/aussierobots/ublox_dgnss/issues/12>`_ from gsokoll/main
+  Add multiple device support, and moving base+rover example
+* Added new messages for satellite data & security
+* increase buffer size
+* Add multiple device support, and moving base+rover example
+* Contributors: Geoff Sokoll, Nick Hortovanyi
+
 0.4.4 (2023-05-24)
 ------------------
 * cmake uncrustify changes
