@@ -2,6 +2,11 @@
 Changelog for package ublox_dgnss_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.3 (2024-03-22)
+------------------
+* Jamming and interference monitor configuration
+* Contributors: Nick Hortovanyi
+
 0.5.2 (2023-11-05)
 ------------------
 * removed saving of read serial str in connection
