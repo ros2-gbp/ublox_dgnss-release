@@ -1,3 +1,32 @@
+## ublox_dgnss (iron) - 0.5.4-1
+
+The packages in the `ublox_dgnss` repository were released into the `iron` distro by running `/usr/bin/bloom-release ublox_dgnss --track iron --rosdistro iron` on `Wed, 16 Oct 2024 00:53:17 -0000`
+
+These packages were released:
+- `ntrip_client_node`
+- `ublox_dgnss`
+- `ublox_dgnss_node`
+- `ublox_nav_sat_fix_hp_node`
+- `ublox_ubx_interfaces`
+- `ublox_ubx_msgs`
+
+Version of package(s) in repository `ublox_dgnss`:
+
+- upstream repository: https://github.com/aussierobots/ublox_dgnss
+- release repository: https://github.com/ros2-gbp/ublox_dgnss-release.git
+- rosdistro version: `0.5.3-1`
+- old version: `0.5.3-1`
+- new version: `0.5.4-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.25.1`
+- rosdistro version: `1.0.0`
+- vcstools version: `0.1.42`
+
+
 ## ublox_dgnss (jazzy) - 0.5.4-1
 
 The packages in the `ublox_dgnss` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release ublox_dgnss --track jazzy --rosdistro jazzy` on `Wed, 16 Oct 2024 00:48:30 -0000`
