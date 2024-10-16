@@ -2,6 +2,12 @@
 Changelog for package ublox_dgnss
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.4 (2024-10-16)
+------------------
+* Update ntrip_client.launch.py
+  fixed script description
+* Contributors: Nick Hortovanyi
+
 0.5.3 (2024-03-22)
 ------------------
 * hp sv tracking and jamming/interference launch file
