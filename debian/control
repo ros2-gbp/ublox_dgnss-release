@@ -1,0 +1,12 @@
+Source: ros-jazzy-ublox-dgnss-node
+Section: misc
+Priority: optional
+Maintainer: Nick Hortovanyi <nick@aussierobots.com.au>
+Build-Depends: debhelper (>= 9.0.0), libusb-1.0-0-dev, pkg-config, ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-copyright <!nocheck>, ros-jazzy-ament-cmake-cppcheck <!nocheck>, ros-jazzy-ament-cmake-uncrustify <!nocheck>, ros-jazzy-ament-lint-auto <!nocheck>, ros-jazzy-ament-lint-common <!nocheck>, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-rtcm-msgs, ros-jazzy-ublox-ubx-interfaces, ros-jazzy-ublox-ubx-msgs, ros-jazzy-ros-workspace
+Homepage: https://github.com/aussierobots/ublox_dgnss
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-ublox-dgnss-node
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libusb-1.0-0-dev, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-rtcm-msgs, ros-jazzy-std-msgs, ros-jazzy-ublox-ubx-interfaces, ros-jazzy-ublox-ubx-msgs, ros-jazzy-ros-workspace
+Description: Provides a ublox_gnss node for a u-blox GPS GNSS receiver using Gen 9 UBX Protocol
