@@ -1,1 +1,1 @@
-{"base": "6219a6e8", "parent": "debian/rolling/ublox_ubx_interfaces", "previous": "fb256837", "trim": "", "trimbase": ""}
+{"base": "bb63ce3c66d8", "parent": "debian/kilted/ublox_ubx_interfaces", "previous": "df6843dc0bfb", "trim": "", "trimbase": ""}
