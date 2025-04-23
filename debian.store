@@ -1,1 +1,1 @@
-{"base": "66bc21aa", "parent": "debian/rolling/ublox_nav_sat_fix_hp_node", "previous": "1cb5f1a4", "trim": "", "trimbase": ""}
+{"base": "3db3b6ba1799", "parent": "debian/kilted/ublox_nav_sat_fix_hp_node", "previous": "42ffb2186346", "trim": "", "trimbase": ""}
