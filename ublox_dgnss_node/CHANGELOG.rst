@@ -2,6 +2,85 @@
 Changelog for package ublox_dgnss_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.7 (2025-05-29)
+------------------
+* fixed whitespace comment
+* Contributors: Nick Hortovanyi
+
+0.5.6 (2025-05-29)
+------------------
+* changed ament_target_dependencies to target_link_libraries
+* Merge pull request `#45 <https://github.com/aussierobots/ublox_dgnss/issues/45>`_ from ARK3r/main
+  fix: show correct port_id
+* now it shows reasonable port ids
+* Merge pull request `#43 <https://github.com/aussierobots/ublox_dgnss/issues/43>`_ from bvsam/ubx-nav-svin-fix
+  Fixing UBX-NAV-SVIN reading
+* Merge pull request `#40 <https://github.com/aussierobots/ublox_dgnss/issues/40>`_ from mak22223/main
+  Fixed U4, X4, I4 values interpretation
+* Fixed U4, X4, I4 values interpretation
+* Fixing UBX-NAV-SVIN reading
+* Contributors: ARK3r, Benjamin Sam, Markin Maxim, Nick Hortovanyi
+
+0.5.5 (2025-02-12)
+------------------
+* Merge pull request `#33 <https://github.com/aussierobots/ublox_dgnss/issues/33>`_ from bvsam/base-rtcm-support
+  Base rtcm support
+* fixed style
+* Merge branch 'main' into base-rtcm-support
+* Merge pull request `#32 <https://github.com/aussierobots/ublox_dgnss/issues/32>`_ from bvsam/mb+r_fix
+  Updating mb+r_base launch file and adding missing parameters
+* Fixing formatting to allow for tests to pass
+* Fixing formatting to enable tests to pass
+* Fixing errors in code to ensure successful builds
+* Adding more CONFIG_TMODE parameters
+* Updating mb+r_base launch file and adding missing parameters
+* Adding initial code for fixed base use case
+* uncrustify formatting fixes
+* Merge branch 'main' of github.com:aussierobots/ublox_dgnss
+* uncrustify formatting changes
+* Merge pull request `#30 <https://github.com/aussierobots/ublox_dgnss/issues/30>`_ from bvsam/base-station-rtcm
+  Add base station rtcm message publishing support
+* Updating rtcm publisher QOS for subscription compatibility
+* Minor: fixing error in code
+* Changing rtcm publisher topic name
+* Adding payload logging for rtcm publishing
+* Making subscription topics absolute for backwards compatbility
+* Updating subscription topic names to be non-absolute
+* Fixing errors in code
+* Adding basic rtcm receival and publishing functionality
+* Added Subcription Options Qos Override on subscriptions
+* Add Publisher Option with QOS Overriding for all publishers
+* uncrustify formatting changes
+* parameter pub for ubx_mon_ver ubx_sec_uniqid
+* ubx_sec_sig msg ver 2 changes
+* added CFG_SIGNAL for GPS, SBAS, GAL, BDS, QZSS and GLO
+* updated cfg items
+* Contributors: Benjamin Sam, Nick Hortovanyi, Xiran Zhou, ryan
+
+0.5.4 (2024-10-16)
+------------------
+* fixed uncrustify formatting errros
+* Added copyright and fixed formatting
+* Merge pull request `#27 <https://github.com/aussierobots/ublox_dgnss/issues/27>`_ from aussierobots/spartn-dev
+  initial spartn changes
+* Merge pull request `#25 <https://github.com/aussierobots/ublox_dgnss/issues/25>`_ from ARK3r/spartn-dev
+* fix iteration variable override
+* add UBX-MON-COMMS
+* move UBX-MON-VER to mon folder
+* Added UBX Rxm Cor|Spartn|SpartnKey
+* Merge pull request `#24 <https://github.com/aussierobots/ublox_dgnss/issues/24>`_ from ARK3r/spartn-key-f9p-d9s
+  Spartn configuration / monitoring support
+* Merge pull request `#23 <https://github.com/aussierobots/ublox_dgnss/issues/23>`_ from icos-pit/main
+  added printing serial_str\_ & serial_num_string to error of not finding device with specificed serial string.
+* added uart2 and spartn source cfg items
+* add serial_str\_ & serial_num_string to error stream  of finding USB device with specified serial string
+* Contributors: ARK3r, Nick Hortovanyi, iman01
+
+0.5.3 (2024-03-22)
+------------------
+* Jamming and interference monitor configuration
+* Contributors: Nick Hortovanyi
+
 0.5.2 (2023-11-05)
 ------------------
 * removed saving of read serial str in connection

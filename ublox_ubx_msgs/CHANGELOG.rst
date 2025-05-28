@@ -2,6 +2,32 @@
 Changelog for package ublox_ubx_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.7 (2025-05-29)
+------------------
+
+0.5.6 (2025-05-29)
+------------------
+
+0.5.5 (2025-02-12)
+------------------
+* Merge pull request `#33 <https://github.com/aussierobots/ublox_dgnss/issues/33>`_ from bvsam/base-rtcm-support
+  Base rtcm support
+* Adding initial code for fixed base use case
+* Update UBXSecSig with 1.5 firmware cent freq jamming state
+* Contributors: Benjamin Sam, Nick Hortovanyi
+
+0.5.4 (2024-10-16)
+------------------
+* Merge pull request `#27 <https://github.com/aussierobots/ublox_dgnss/issues/27>`_ from aussierobots/spartn-dev
+  initial spartn changes
+* Merge pull request `#25 <https://github.com/aussierobots/ublox_dgnss/issues/25>`_ from ARK3r/spartn-dev
+* add UBXMonComms msg
+* Added UBX Rxm Cor|Spartn|SpartnKey
+* Contributors: ARK3r, Nick Hortovanyi
+
+0.5.3 (2024-03-22)
+------------------
+
 0.5.2 (2023-11-05)
 ------------------
 
