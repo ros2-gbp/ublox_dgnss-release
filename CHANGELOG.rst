@@ -2,6 +2,17 @@
 Changelog for package ublox_nav_sat_fix_hp_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.7 (2025-05-29)
+------------------
+
+0.5.6 (2025-05-29)
+------------------
+* changed ament_target_dependencies to target_link_libraries
+* Merge pull request `#36 <https://github.com/aussierobots/ublox_dgnss/issues/36>`_ from ARK3r/add-qos-options-nav-sat-fix-node
+  add qos options to nav sat fix hp node
+* add qos options to nav sat fix hp node
+* Contributors: ARK3r, Nick Hortovanyi
+
 0.5.5 (2025-02-12)
 ------------------
 
