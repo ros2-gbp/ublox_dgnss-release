@@ -14,11 +14,25 @@ def generate_launch_description():
   )
 
   params = [{'CFG_USBOUTPROT_NMEA': False},
-            {'CFG_RATE_MEAS': 100},
-            {'CFG_RATE_NAV': 1},
+            {'CFG_UART1OUTPROT_UBX': False},
+            {'CFG_UART1OUTPROT_NMEA': False},
+            {'CFG_UART1OUTPROT_RTCM3X': False},
+            {'CFG_RATE_MEAS': 200},
+            {'CFG_RATE_NAV': 2},
+            {'CFG_SEC_SPOOFDET_SIM_SIG_DIS': False},
+            {'CFG_SEC_JAMDET_SENSITIVITY_HI': True},
             {'CFG_MSGOUT_UBX_NAV_HPPOSLLH_USB': 1},
-            {'CFG_MSGOUT_UBX_NAV_STATUS_USB': 5},
-            {'CFG_MSGOUT_UBX_RXM_RTCM_USB': 1}]
+            {'CFG_MSGOUT_UBX_NAV_STATUS_USB': 20},
+            {'CFG_MSGOUT_UBX_NAV_COV_USB': 20},
+            {'CFG_MSGOUT_UBX_NAV_SAT_USB': 20},
+            {'CFG_MSGOUT_UBX_NAV_ORB_USB': 20},
+            {'CFG_MSGOUT_UBX_NAV_SIG_USB': 20},
+            {'CFG_MSGOUT_UBX_SEC_SIG_USB': 20},
+            {'CFG_MSGOUT_UBX_SEC_SIGLOG_USB': 20},
+            {'CFG_MSGOUT_UBX_RXM_RTCM_USB': 20},
+            {'CFG_MSGOUT_UBX_RXM_COR_USB': 20},
+            {'CFG_MSGOUT_UBX_RXM_RAWX_USB': 20},
+            {'CFG_MSGOUT_UBX_RXM_MEASX_USB': 20}]
 
   container1 = ComposableNodeContainer(
     name='ublox_dgnss_container',
