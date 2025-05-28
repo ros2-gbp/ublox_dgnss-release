@@ -2,6 +2,32 @@
 Changelog for package ntrip_client_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.7 (2025-05-29)
+------------------
+
+0.5.6 (2025-05-29)
+------------------
+* changed ament_target_dependencies to target_link_libraries
+* Contributors: Nick Hortovanyi
+
+0.5.5 (2025-02-12)
+------------------
+* added log_level param and CURLOPT_MAXAGE_CONN
+* Contributors: Nick Hortovanyi
+
+0.5.4 (2024-10-16)
+------------------
+
+0.5.3 (2024-03-22)
+------------------
+* Merge pull request `#18 <https://github.com/aussierobots/ublox_dgnss/issues/18>`_ from tfoldi/user_agent
+  chore: set user-agent for caster http requests
+* chore: set user-agent for caster http requests
+  Some public caster servers (like caster.centipede.fr) requires
+  specific user agents for streaming requests (NTRIP as first
+  string in the agent).
+* Contributors: Nick Hortovanyi, Tamas Foldi
+
 0.5.2 (2023-11-05)
 ------------------
 
