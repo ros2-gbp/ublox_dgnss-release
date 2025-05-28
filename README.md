@@ -1,3 +1,32 @@
+## ublox_dgnss (rolling) - 0.5.6-1
+
+The packages in the `ublox_dgnss` repository were released into the `rolling` distro by running `/usr/bin/bloom-release ublox_dgnss --track rolling --rosdistro rolling` on `Wed, 28 May 2025 21:53:03 -0000`
+
+These packages were released:
+- `ntrip_client_node`
+- `ublox_dgnss`
+- `ublox_dgnss_node`
+- `ublox_nav_sat_fix_hp_node`
+- `ublox_ubx_interfaces`
+- `ublox_ubx_msgs`
+
+Version of package(s) in repository `ublox_dgnss`:
+
+- upstream repository: https://github.com/aussierobots/ublox_dgnss
+- release repository: https://github.com/ros2-gbp/ublox_dgnss-release.git
+- rosdistro version: `0.5.5-4`
+- old version: `0.5.5-4`
+- new version: `0.5.6-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.25.1`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## ublox_dgnss (rolling) - 0.5.5-4
 
 The packages in the `ublox_dgnss` repository were released into the `rolling` distro by running `/usr/bin/bloom-release ublox_dgnss --track rolling --rosdistro rolling` on `Wed, 12 Feb 2025 03:43:01 -0000`
