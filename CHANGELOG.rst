@@ -2,6 +2,14 @@
 Changelog for package ntrip_client_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.7 (2025-05-29)
+------------------
+
+0.5.6 (2025-05-29)
+------------------
+* changed ament_target_dependencies to target_link_libraries
+* Contributors: Nick Hortovanyi
+
 0.5.5 (2025-02-12)
 ------------------
 * added log_level param and CURLOPT_MAXAGE_CONN
