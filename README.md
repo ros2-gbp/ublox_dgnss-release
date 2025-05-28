@@ -1,15 +1,14 @@
-### usb connection issue with 0.5.1 release ###
-An inadvertent bug was introduced in 0.5.1 that affects those connecting without having a USB serial string defined on the F9. Please use the source code directly. 0.5.2 has a fix. It does not affect all installations.
-
 # ublox-dgnss
 
-This usb based driver is focused on UBLOX Generation 9 UBX messaging, for a DGNSS rover. High precision data is available. A moving base station configuration has been added.
+This usb based driver is focused on UBLOX Generation 9 UBX messaging, for a DGNSS rover. High precision data is available. A moving base station configuration has been added. This package also supports a fixed base station and moving rover use case.
 
-RTCM messages can be delivered externally. Alternately the ntrip_client_node can be utilised to retrieve RTCM messages from a castor to publish `/ntrip_client/rtcm` messages which will be received by the ublox_dgnss_node.
+RTCM messages can be delivered externally. Alternately the ntrip_client_node can be utilised to retrieve RTCM messages from a castor to publish `/ntrip_client/rtcm` messages which will be received by the ublox_dgnss_node. 
 
-It will only work with later generation ublox devices. Testing and development was performed against a ZED-F9P and a ZED-F9R connected via USB, under Ubuntu 22.04. The driver uses libusb api 1.0.
+Work has started on SPARTN support - basic commands are available to enable it on the device and to confirm that the messages are being used (when delivered to the device).
 
-This release works with Rolling, Humble and Iron.
+This driver will only work with later generation ublox devices. Testing and development was performed against a ZED-F9P and a ZED-F9R connected via USB, under Ubuntu 22.04/24.04. The driver uses libusb api 1.0.
+
+This release works with Rolling, Kilted, Jazzy and Humble.
 
 You may need to create a udev rule as follows:
 
@@ -90,9 +89,12 @@ Values will be as described in the integration manual (without scaling applied).
   CFG_MSGOUT_UBX_NAV_TIMEUTC_USB
   CFG_MSGOUT_UBX_NAV_VELECEF_USB
   CFG_MSGOUT_UBX_NAV_VELNED_USB
+  CFG_MSGOUT_UBX_RXM_COR_USB
   CFG_MSGOUT_UBX_RXM_RTCM_USB
   CFG_MSGOUT_UBX_RXM_MEASX_USB
   CFG_MSGOUT_UBX_RXM_RAWX_USB
+  CFG_MSGOUT_UBX_RXM_SPARTN_USB
+  CFG_MSGOUT_UBX_MON_COMMS_USB
   CFG_MSGOUT_UBX_ESF_MEAS_USB
   CFG_MSGOUT_UBX_ESF_STATUS_USB
   CFG_MSGOUT_UBX_SEC_SIG_USB
@@ -118,16 +120,26 @@ Values will be as described in the integration manual (without scaling applied).
   CFG_TMODE_POS_TYPE
   CFG_UART1INPROT_NMEA
   CFG_UART1INPROT_RTCM3X
+  CFG_UART1INPROT_SPARTN
   CFG_UART1INPROT_UBX
   CFG_UART1OUTPROT_NMEA
   CFG_UART1OUTPROT_RTCM3X
   CFG_UART1OUTPROT_UBX
+  CFG_UART2INPROT_NMEA
+  CFG_UART2INPROT_RTCM3X
+  CFG_UART2INPROT_SPARTN
+  CFG_UART2INPROT_UBX
+  CFG_UART2OUTPROT_NMEA
+  CFG_UART2OUTPROT_RTCM3X
+  CFG_UART2OUTPROT_UBX
   CFG_USBINPROT_NMEA
   CFG_USBINPROT_RTCM3X
   CFG_USBINPROT_UBX
   CFG_USBOUTPROT_NMEA
   CFG_USBOUTPROT_RTCM3X
   CFG_USBOUTPROT_UBX
+
+  CFG_SPARTN_USE_SOURCE
 
   CFG_SFIMU_AUTO_MNTALG_ENA
   CFG_SFIMU_IMU_MNTALG_YAW
@@ -142,13 +154,14 @@ Values will be as described in the integration manual (without scaling applied).
   CFG_SFODO_LATENCY
   CFG_SFODO_QUANT_ERROR
 
+
 ### Device Identification Parameters
 
 aka Use with Multiple Devices
 
-By default, the ublox_dgnss node will search for and connect to the first device which matches the ublox USB ID's (vendor ID of 0x1546 and product ID of 0x1546).  If multiple devices are connected simultaneously, the remaining devices will be ignored.  In this situation you have no control over which device is used, since the order in which they are found may depend on the order in which they were physically attached to the host.
+By default, the ublox_dgnss node will search for and connect to the first device which matches the ublox USB ID's (vendor ID of 0x1546 and product ID of 0x01a9).  If multiple devices are connected simultaneously, the remaining devices will be ignored.  In this situation you have no control over which device is used, since the order in which they are found may depend on the order in which they were physically attached to the host.
 
-If you have multiple ublox devices attached simultaneously and wish to connect to a specific device, you can specify a launch parameter "DEVICE_SERIAL_STRING".  The node will then search for and connect to the first device with this matching serial string.  The device serial string itself should be programmed into the ublox device beforehand using u-center software.
+If you have multiple ublox devices attached simultaneously and wish to connect to a specific device, you can specify a launch parameter "DEVICE_SERIAL_STRING".  The node will then search for and connect to the first device with this matching serial string.  The device serial string "CFG-USB-SERIAL_NO_STRx" itself should be programmed into the ublox device beforehand using u-center software.
 
 The frame ID used in ROS2 messages for that device can also be specified using the launch parameter "FRAME_ID".
 
@@ -156,11 +169,12 @@ Note: these parameters are not written to the device.  They only instruct the no
 
 # ROS2 UBX NAV Messages
 
-The following messages may be outputed. They included a `std_msgs/Header header` with the remainder of the fields matching the UBX output. Note that field names use different notation as the UBX field name notation is not compliant with the ROS IDL field names.
+The following messages may be outputted. They included a `std_msgs/Header header` with the remainder of the fields matching the UBX output. Note that field names use different notation as the UBX field name notation is not compliant with the ROS IDL field names.
 ```
 /ubx_esf_meas
 
 /ubx_esf_status
+/ubx_mon_comms
 /ubx_nav_clock
 /ubx_nav_cov
 /ubx_nav_dop
@@ -179,6 +193,7 @@ The following messages may be outputed. They included a `std_msgs/Header header`
 /ubx_nav_time_utc
 /ubx_nav_vel_ecef
 /ubx_nav_vel_ned
+/ubx_rxm_cor
 /ubx_rxm_rtcm
 /ubx_rxm_measx
 /ubx_rxm_rawx
@@ -188,8 +203,10 @@ The following messages may be outputed. They included a `std_msgs/Header header`
 ```
 
 The following topics are subscribed to
+```
 /ubx_esf_meas_to_device
 /ntrip_client/rtcm
+```
 
 # ROS2 NAVSATFIX Messages
 
@@ -212,6 +229,12 @@ An example launch file is provided. You will need to set values appropriate for 
 ros2 launch ublox_dgnss ntrip_client.launch.py use_https:=true host:=ntrip.data.gnss.ga.gov.au port:=443 mountpoint:=MBCH00AUS0 username:=username password:=password
 ```
 Note the launch file has been configured to also use environment variables `NTRIP_USERNAME` & `NTRIP_PASSWORD` such that you dont need credentials in the launch scripts.
+
+# Fixed Base and Rover
+
+This package supports the use case where a fixed base station is setup to emit RTCM data and a moving rover consumes the emitted RTCM data for improved location accuracy as it moves. The base is setup to perform the survey-in procedure and, once finished, emit RTCM messages.
+
+Example launch files are provided for this use case. Run `ublox_fb+r_base.launch.py` for the fixed base and `ublox_fb+r_rover.launch.py` for the moving rover.
 
 # Moving Base and Rover
 
@@ -315,7 +338,7 @@ v_acc: 123
 
 The driver output the raw UBX data into the message so some interpreting is required.
 
-`h_acc` and `v_acc` are in millimeters but need to be scaled by 0.1 - `h_acc: 16.9 mm` and v_acc: 12.3 mm` per the above. Such that there is centimeter level accruacy.
+`h_acc` and `v_acc` are in millimeters but need to be scaled by 0.1 - `h_acc: 16.9 mm` and `v_acc: 12.3 mm` per the above. Such that there is centimeter level accuracy.
 
 If in doubt as to what the scaling is, please look at the F9 interface description for an explanation. All debug log output have had scaling applied.
 
