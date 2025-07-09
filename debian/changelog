@@ -1,0 +1,206 @@
+ros-rolling-ublox-dgnss (0.5.8-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Tue, 08 Jul 2025 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.7-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Wed, 28 May 2025 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.6-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Wed, 28 May 2025 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.5-1noble) noble; urgency=high
+
+  * Merge pull request #33 <https://github.com/aussierobots/ublox_dgnss/issues/33> from bvsam/base-rtcm-support
+    Base rtcm support
+  * Fixed ublox_fb+r_rover.launch.py and ublox_fb+r_base.launch.py
+  * updated ublox_fb+r_rover.launch.py and ublox_fb+r_base.launch.py
+  * updated ublox_fb+r_rover.launch.py and ublox_fb+r_base.launch.py
+  * updated ublox_fb+r_rover.launch.py and ublox_fb+r_base.launch.py
+  * Changed ublox_fb+r_base.launch.py
+  * Changed ublox_fb+r_rover.launch.py
+  * Merge branch 'main' into base-rtcm-support
+  * Merge pull request #32 <https://github.com/aussierobots/ublox_dgnss/issues/32> from bvsam/mb+r_fix
+    Updating mb+r_base launch file and adding missing parameters
+  * Updating launch file description comments
+  * Updating mb+r_base launch file and adding missing parameters
+  * Adding 2 launch files for fixed base use case
+  * Improving ublox_rover_hpposllh_navsatfix launch file
+  * Cleaning up and improving launch files
+  * added ubx_rxm_cor usb output
+  * ubx_sec_sig msg ver 2 changes
+  * added log-level for debug
+  * added log_level param and CURLOPT_MAXAGE_CONN
+  * Contributors: Benjamin Sam, Nick Hortovanyi, Xiran Zhou, ryan
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Tue, 11 Feb 2025 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.4-1noble) noble; urgency=high
+
+  * Update ntrip_client.launch.py
+    fixed script description
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Tue, 15 Oct 2024 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.3-1noble) noble; urgency=high
+
+  * hp sv tracking and jamming/interference launch file
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Thu, 21 Mar 2024 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.2-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Sat, 04 Nov 2023 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.1-1noble) noble; urgency=high
+
+  * Merge branch 'aussierobots:main' into main
+  * Contributors: Geoff Sokoll
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Thu, 12 Oct 2023 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.5.0-1noble) noble; urgency=high
+
+  * Merge branch 'main' of github.com:aussierobots/ublox_dgnss
+  * Merge pull request #12 <https://github.com/aussierobots/ublox_dgnss/issues/12> from gsokoll/main
+    Add multiple device support, and moving base+rover example
+  * Add multiple device support, and moving base+rover example
+  * Contributors: Geoff Sokoll, Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Thu, 12 Oct 2023 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.4.4-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Tue, 23 May 2023 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.4.3-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Tue, 23 May 2023 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.4.2-1noble) noble; urgency=high
+
+  * fixed dependc
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Tue, 23 May 2023 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.4.1-1noble) noble; urgency=high
+
+  * updates for release
+  * Merge pull request #10 <https://github.com/aussierobots/ublox_dgnss/issues/10> from aussierobots/F9R-and-RTCM
+    F9 r and rtcm
+  * added a new ntrip_client node to pub rtcm msgs
+  * Merge pull request #9 <https://github.com/aussierobots/ublox_dgnss/issues/9> from gsokoll/F9R-and-RTCM
+    Composable node version of navsatfix
+  * Composable node version of navsatfix.  Added example launch file.
+  * Merge pull request #7 <https://github.com/aussierobots/ublox_dgnss/issues/7> from CMP-Engineers/navsatfix
+    Navsatfix
+  * renamed node, clang formatted, updated README
+  * added ubx-rxm-rtcm publishing
+  * Contributors: Geoff Sokoll, Nick Hortovanyi
+  * Merge pull request #10 <https://github.com/aussierobots/ublox_dgnss/issues/10> from aussierobots/F9R-and-RTCM
+    F9 r and rtcm
+  * added a new ntrip_client node to pub rtcm msgs
+  * Merge pull request #9 <https://github.com/aussierobots/ublox_dgnss/issues/9> from gsokoll/F9R-and-RTCM
+    Composable node version of navsatfix
+  * Composable node version of navsatfix.  Added example launch file.
+  * Merge pull request #7 <https://github.com/aussierobots/ublox_dgnss/issues/7> from CMP-Engineers/navsatfix
+    Navsatfix
+  * renamed node, clang formatted, updated README
+  * added ubx-rxm-rtcm publishing
+  * Contributors: Geoff Sokoll, Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Tue, 23 May 2023 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.3.5-1noble) noble; urgency=high
+
+  * fixed title underline
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Mon, 23 May 2022 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.3.4-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Mon, 23 May 2022 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.3.3-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Mon, 23 May 2022 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.3.2-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Thu, 12 May 2022 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.3.1-1noble) noble; urgency=high
+
+
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Fri, 13 May 2022 02:43:00 -0000
+
+ros-rolling-ublox-dgnss (0.3.0-1noble) noble; urgency=high
+
+  * changes for humble
+  * removed author element
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Fri, 13 May 2022 00:26:00 -0000
+
+ros-rolling-ublox-dgnss (0.2.3-1noble) noble; urgency=high
+
+  * changed build dependencies
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Sat, 24 Jul 2021 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.2.2-1noble) noble; urgency=high
+
+  * 0.2.2 build farm dependency changes
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Wed, 21 Jul 2021 21:14:00 -0000
+
+ros-rolling-ublox-dgnss (0.2.1-1noble) noble; urgency=high
+
+  * updated version 0.2.1
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Wed, 21 Jul 2021 19:24:00 -0000
+
+ros-rolling-ublox-dgnss (0.2.0-1noble) noble; urgency=high
+
+  * updated version number and email
+  * Fixed license to Apache License, Version 2.0
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Mon, 19 Jul 2021 14:00:00 -0000
+
+ros-rolling-ublox-dgnss (0.1.0-1noble) noble; urgency=high
+
+  * updated package version
+  * Initial release
+  * Contributors: Nick Hortovanyi
+
+ -- Nick Hortovanyi <nick@aussierobots.com>  Sat, 10 Jul 2021 14:00:00 -0000
+
+
