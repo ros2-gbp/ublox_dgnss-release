@@ -41,7 +41,7 @@ Connection::Connection(
   log_level_ = log_level;
   ctx_ = NULL;
   devh_ = NULL;
-  timeout_ms_ = 45;
+  timeout_ms_ = 250;
   timeout_tv_ = {1, 0};       // default the timeout to 1 seconds
   keep_running_ = true;
 
@@ -508,8 +508,9 @@ int Connection::read_chars(u_char * data, size_t size)
   /* To receive characters from the device initiate a bulk_transfer to the
    * Endpoint with address ep_in_addr.
    */
-  int actual_length;
-  int rc = libusb_bulk_transfer(
+  int actual_length = 0;
+  int rc = 0;
+  rc = libusb_bulk_transfer(
     devh_, ep_data_in_addr_ | LIBUSB_ENDPOINT_IN, data, size, &actual_length,
     timeout_ms_);
   if (rc == LIBUSB_ERROR_TIMEOUT) {
@@ -526,10 +527,19 @@ int Connection::read_chars(u_char * data, size_t size)
 
 void Connection::write_char(u_char c)
 {
-  int actual_length;
-  int rc = libusb_bulk_transfer(
-    devh_, ep_data_out_addr_ | LIBUSB_ENDPOINT_OUT, &c, 1,
-    &actual_length, 0);
+  int actual_length = 0;
+  int rc = 0;
+  {
+    const std::lock_guard<std::mutex> lock(write_mutex_);
+    rc = libusb_bulk_transfer(
+     devh_,
+     ep_data_out_addr_ | LIBUSB_ENDPOINT_OUT,
+     &c,
+     1,
+      &actual_length,
+      timeout_ms_);  // Use timeout instead of 0
+  }  // end lock scope
+
   if (rc < 0) {
     std::string exception_msg("Error while sending char: ");
     exception_msg.append(libusb_error_name(rc));
@@ -546,10 +556,19 @@ void Connection::write_buffer(u_char * buf, size_t size)
     (debug_cb_fn_)(oss.str());
   }
 
-  int actual_length;
-  int rc = libusb_bulk_transfer(
-    devh_, ep_data_out_addr_ | LIBUSB_ENDPOINT_OUT, buf, size,
-    &actual_length, timeout_ms_);  // Use timeout instead of 0
+  int actual_length = 0;
+  int rc = 0;
+  {
+    const std::lock_guard<std::mutex> lock(write_mutex_);
+
+    rc = libusb_bulk_transfer(
+      devh_,
+      ep_data_out_addr_ | LIBUSB_ENDPOINT_OUT,
+      buf,
+      static_cast<int>(size),
+      &actual_length,
+      timeout_ms_);  // Use timeout instead of 0
+  }  // end lock scope
 
   if (debug_cb_fn_) {
     std::ostringstream oss;
@@ -819,17 +838,17 @@ void Connection::cleanup_transfer_queue()
           msg.append("LIBUSB_TRANSFER_STALL");
           break;
         case LIBUSB_TRANSFER_NO_DEVICE:
-          msg.append("LIBUSB_TRANSFER_STALL");
+          msg.append("LIBUSB_TRANSFER_NO_DEVICE");
           break;
         case LIBUSB_TRANSFER_OVERFLOW:
-          msg.append("LIBUSB_TRANSFER_STALL");
+          msg.append("LIBUSB_TRANSFER_OVERFLOW");
           break;
         default:
           msg.append(" UNKNOWN LIBUSB TRANSFER STATUS");
       }
       (debug_cb_fn_)(msg);
 
-      transfer_queue_.erase(it++);
+      it = transfer_queue_.erase(it);
     } else {
       ++it;
     }
