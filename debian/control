@@ -1,0 +1,12 @@
+Source: ros-kilted-ublox-dgnss
+Section: misc
+Priority: optional
+Maintainer: Nick Hortovanyi <nick@aussierobots.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-ntrip-client-node, ros-kilted-ublox-dgnss-node, ros-kilted-ublox-nav-sat-fix-hp-node, ros-kilted-ublox-ubx-interfaces, ros-kilted-ublox-ubx-msgs, ros-kilted-ros-workspace
+Homepage: https://github.com/aussierobots/ublox_dgnss
+Standards-Version: 3.9.2
+
+Package: ros-kilted-ublox-dgnss
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-ntrip-client-node, ros-kilted-ublox-dgnss-node, ros-kilted-ublox-nav-sat-fix-hp-node, ros-kilted-ublox-ubx-interfaces, ros-kilted-ublox-ubx-msgs, ros-kilted-ros-workspace
+Description: Provides a ublox_dgnss node for a u-blox GPS DGNSS receiver using Gen 9 UBX Protocol
