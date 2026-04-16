@@ -2,6 +2,13 @@
 Changelog for package ublox_dgnss_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.4 (2026-04-16)
+------------------
+* Merge pull request `#62 <https://github.com/aussierobots/ublox_dgnss/issues/62>`_ from gakutasu/fix/init-attach
+  Fix USB hotplug attach skip on startup by initializing `attached\_`
+* fix init
+* Contributors: Nick Hortovanyi, gakutasu
+
 0.7.3 (2026-03-29)
 ------------------
 * Added UBX_RXM_SFRBX and fixed bug for param set being sent to usb device upon change
