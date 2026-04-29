@@ -1,1 +1,1 @@
-{"base": "4382e171921c", "parent": "debian/rolling/ntrip_client_node", "previous": "ad833ccaef38", "trim": "", "trimbase": ""}
+{"base": "e6ae43004f23", "parent": "debian/lyrical/ntrip_client_node", "previous": "00efd49f0c76", "trim": "", "trimbase": ""}
