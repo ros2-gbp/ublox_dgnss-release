@@ -1,0 +1,12 @@
+Source: ros-lyrical-ublox-dgnss
+Section: misc
+Priority: optional
+Maintainer: Nick Hortovanyi <nick@aussierobots.com>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ntrip-client-node, ros-lyrical-ublox-dgnss-node, ros-lyrical-ublox-nav-sat-fix-hp-node, ros-lyrical-ublox-ubx-interfaces, ros-lyrical-ublox-ubx-msgs, ros-lyrical-ros-workspace
+Homepage: https://github.com/aussierobots/ublox_dgnss
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-ublox-dgnss
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-ntrip-client-node, ros-lyrical-ublox-dgnss-node, ros-lyrical-ublox-nav-sat-fix-hp-node, ros-lyrical-ublox-ubx-interfaces, ros-lyrical-ublox-ubx-msgs, ros-lyrical-ros-workspace
+Description: Provides a ublox_dgnss node for a u-blox GPS DGNSS receiver using Gen 9 UBX Protocol
